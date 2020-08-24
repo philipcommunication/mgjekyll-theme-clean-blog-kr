@@ -1,18 +1,17 @@
-title:              "블로그 제목"
-tagline:            "블로그 슬로건"
-email:              "your-email@example.com"
-description:        "블로그 설명"
-author:             "작성자 이름"
+title:              "Loading Blog"
+tagline:            "국내 바이럴 광고 및 공식 광고"
+email:              "ndk0929@gmail.com"
+description:        "광고업에서 경험한 주관적인 경험담"
+author:             "Loading"
 baseurl:            "/"
-url:                "https://도메인"
+url:                "https://loading.kr"
 locale:             "ko_KR"
-thumbnail:          "/img/thumbnail.jpg"
+thumbnail:          "img/smain.png"
 
 # Social Profiles
-twitter_username:   twitter_username
-instagram_username: instagram_username
-facebook_username:  facebook_username
-linkedin_username:  linkedin_username
+instagram_username: nohdk777
+facebook_username:  100010201817907
+linkedin_username:  동규-노-478872155
 
 # Build settings
 markdown:           kramdown
