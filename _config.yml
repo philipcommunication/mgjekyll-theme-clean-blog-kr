@@ -20,3 +20,6 @@ paginate:           5
 paginate_path:      "/posts/page:num/"
 plugins:
   - jekyll-paginate
+# 블로그 disqus shortname
+disqus:
+  shortname: loading-kr
