@@ -93,4 +93,35 @@
   <meta name="msapplication-TileImage" content="{{ site.github.url }}/img/icon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <!-- End Favicon Tag -->
+  <!-- 네이버 연관 채널-->
+  <script type="application/ld+json">
+{
+ "@context": "http://schema.org",
+ "@type": "Person",
+ "name": "{{ site.title }}",
+ "url": "{{ site.url }}",
+ "sameAs": [
+   "https://www.facebook.com/profile.php?id=100010201817907",
+   "https://www.instagram.com/nohdk777/"
+ ]
+}
+</script>
+<!--네이버 연관채널 끝-->
+
+<!--구조화된 데이터-->
+{%if page.feature %}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "{{ page.title }}",
+      "image": [
+
+        "{{ site.github.url }}{{ page.feature }}"
+       ],
+      "datePublished": "{{ page.data }}",
+
+    }
+    </script>
+  {% endif %}
 </head>
