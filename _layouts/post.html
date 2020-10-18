@@ -51,3 +51,8 @@ layout: default
     </div>
   </article>
 {% include disqus.html %}
+
+<script>
+  var title = "{{ page.title }}"
+  gtag('event', title, {'event_category' : '글보기'});
+</script>
