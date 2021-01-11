@@ -51,7 +51,17 @@ layout: default
     </div>
   </article>
 {% include disqus.html %}
-
+<script type="text/javascript">
+  dataLayer.push({
+    'event':'post_view',
+    'post-title' : '{{ page.title }}'
+});
+ </script>
+ <script type="text/javascript">
+   dataLayer.push({
+     'scroll-tracking':'scroll-tracking',
+      });
+  </script>
 <script>
   var title = "{{ page.title }}"
   gtag('event', title, {'event_category' : '글보기'});
