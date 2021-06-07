@@ -6,7 +6,7 @@ author:             "Loading"
 baseurl:            "/"
 url:                "https://loading.kr"
 locale:             "ko_KR"
-thumbnail:          "img/smain.png"
+thumbnail:          "/img/smain.png"
 
 # Social Profiles
 instagram_username: nohdk777
