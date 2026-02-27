@@ -1,0 +1,98 @@
+{% assign category = page.categories.first %}
+{% assign category_posts = site.categories[category] %}
+
+{% for p in category_posts %}
+{% if p.url == page.url %}
+{% assign cur_idx = forloop.index0 %}
+{% assign prev_idx = cur_idx | plus: 1 %}
+{% assign next_idx = cur_idx | minus: 1 %}
+
+{% if prev_idx < category_posts.size %} {% assign prev_post=category_posts[prev_idx] %} {% endif %} {% if next_idx>= 0
+    %}
+    {% assign next_post = category_posts[next_idx] %}
+    {% endif %}
+    {% break %}
+    {% endif %}
+    {% endfor %}
+
+    <div class="post-navigation-section">
+        <h3 class="related-title">NEXT / PREV MISSION</h3>
+        <div class="row related-grid">
+
+            <!-- Next Post -->
+            {% if next_post %}
+            <div class="col-lg-5 col-md-6 mb-4">
+                <div class="related-card next-card">
+                    <a href="{{ next_post.url | relative_url }}">
+                        <div class="post-feature-wrapper">
+                            {% if next_post.feature contains 'smain' %}
+                            <div class="post-feature-template"
+                                style="background-image: url('/img/post%20main%20bg.png');">
+                                {% else %}
+                                <div class="post-feature-template"
+                                    style="background-image: url('{{ next_post.feature | relative_url }}');">
+                                    {% endif %}
+                                    <div class="template-title">{{ next_post.title }}</div>
+                                    <div class="card-overlay next-overlay">
+                                        <span class="card-level">NEXT STAGE</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Previous Post -->
+            {% if prev_post %}
+            <div class="col-lg-5 col-md-6 mb-4">
+                <div class="related-card prev-card">
+                    <a href="{{ prev_post.url | relative_url }}">
+                        <div class="post-feature-wrapper">
+                            {% if prev_post.feature contains 'smain' %}
+                            <div class="post-feature-template"
+                                style="background-image: url('/img/post%20main%20bg.png');">
+                                {% else %}
+                                <div class="post-feature-template"
+                                    style="background-image: url('{{ prev_post.feature | relative_url }}');">
+                                    {% endif %}
+                                    <div class="template-title">{{ prev_post.title }}</div>
+                                    <div class="card-overlay">
+                                        <span class="card-level">PREV STAGE</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <!-- 추천 게시글 섹션 추가 -->
+    <div class="recommended-posts-section">
+        <h3 class="related-title">RECOMMENDED MISSION</h3>
+        <div class="row recommended-grid">
+            {% assign all_posts = site.posts | where_exp: "item", "item.url != page.url" | sample: 4 %}
+            {% for post in all_posts %}
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="related-card recommended-card">
+                    <a href="{{ post.url | relative_url }}">
+                        <div class="post-feature-wrapper">
+                            {% if post.feature contains 'smain' %}
+                            <div class="post-feature-template"
+                                style="background-image: url('/img/post%20main%20bg.png');">
+                                {% else %}
+                                <div class="post-feature-template"
+                                    style="background-image: url('{{ post.feature | relative_url }}');">
+                                    {% endif %}
+                                    <div class="template-title">{{ post.title }}</div>
+                                </div>
+                            </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>

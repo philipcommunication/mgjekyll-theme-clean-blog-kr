@@ -1,0 +1,112 @@
+---
+layout: default
+---
+
+<!-- Page Header -->
+{% if page.background %}
+<header class="masthead" style="background-image: url('{{ page.background | relative_url }}')">
+  {% else %}
+  <header class="masthead" style="background-image: url('/img/bg-post.png')">
+    {% endif %}
+    <div class="overlay"></div>
+    <div class="container-fluid" style="max-width: var(--max-site-width);">
+      <div class="row">
+        <div class="col-lg-12 mx-auto">
+          <div class="page-heading">
+            <div class="header-flex-wrapper">
+              <div class="header-text-side">
+                <h1 class="main-title">Loading Blog</h1>
+                <span class="subheading">마케팅을 게임처럼 쉽게 <img src="/img/joystick_img.png" alt="Joystick"
+                    class="joystick-pixel"></span>
+
+                <!-- INSERT COIN Deco -->
+                <div class="insert-coin">
+                  <img src="/img/coin_img.png" alt="Coin" class="coin-pixel">
+                  <span class="blink">INSERT COIN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid" style="max-width: var(--max-site-width);">
+    <div class="row">
+      <div class="col-lg-12 mx-auto">
+
+        {{ content }}
+
+        <!-- 1. Latest News Board (최신 소식 게시판) -->
+        <section class="news-board-section">
+          <h3 class="section-title"><i class="fas fa-bullhorn"></i> LATEST NEWS</h3>
+          <div class="news-board">
+            <div class="news-header">
+              <span class="news-col-type">TYPE</span>
+              <span class="news-col-title">TITLE</span>
+              <span class="news-col-date">DATE</span>
+            </div>
+            <ul class="news-list">
+              {% if site.data.news.size > 0 %}
+              {% for item in site.data.news limit: 5 %}
+              <li>
+                <a href="{{ item.url | relative_url }}">
+                  <span class="news-type">{{ item.type }}</span>
+                  <span class="news-title">{{ item.title }}</span>
+                  <span class="news-date">{{ item.date }}</span>
+                </a>
+              </li>
+              {% endfor %}
+              {% else %}
+              <li class="news-empty text-center">현재 등록된 소식이 없습니다.</li>
+              {% endif %}
+            </ul>
+          </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- 2. Latest Posts Section (최신 포스팅) -->
+        <section class="latest-posts-section">
+          <h3 class="section-title"><i class="fas fa-file-alt"></i> LATEST POSTS</h3>
+          <div class="post-grid-container">
+            {% for post in site.posts limit: 8 %}
+            {% unless post.categories contains "news" %}
+            <article class="post-preview">
+              <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+                {% if post.feature %}
+                <div class="post-feature-wrapper">
+                  {% if post.feature contains 'smain' %}
+                  <div class="post-feature-template" style="background-image: url('/img/post%20main%20bg.png');">
+                    <div class="template-title">{{ post.title }}</div>
+                  </div>
+                  {% else %}
+                  <img class="post-feature" src="{{ post.feature }}" alt="">
+                  {% endif %}
+                </div>
+                {% endif %}
+                <h2 class="post-title">{{ post.title }}</h2>
+                {% if post.description %}
+                <h4 class="post-subtitle">{{ post.description }}</h4>
+                {% else %}
+                <h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 8 }}</h4>
+                {% endif %}
+              </a>
+              <p class="post-meta">
+                {{ post.date | date: '%B %d, %Y' }}
+              </p>
+            </article>
+            {% endunless %}
+            {% endfor %}
+          </div>
+        </section>
+
+        <!-- Pager -->
+        <div class="clearfix" style="margin-top: 50px; text-align: center;">
+          <a class="btn btn-primary" href="{{ '/posts' | relative_url }}">전체 포스팅 보기 &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </div>

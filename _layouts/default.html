@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+{% include head.html %}
+
+<body class="game-mode">
+
+  <!-- Side Grips (Hardware Decor) -->
+  <div class="ls-grip hardware-side">
+    <div class="decor-label">OFF 🕹️ ON</div>
+    <div class="switch-slot"></div>
+    <div class="vent-group">
+      <div class="vent"></div>
+      <div class="vent"></div>
+      <div class="vent"></div>
+    </div>
+    <div class="decor-label">VOL.</div>
+    <div class="dial-slot"></div>
+  </div>
+  <div class="rs-grip hardware-side">
+    <div class="decor-label">EXT.</div>
+    <div class="port-slot"></div>
+    <div class="vent-group">
+      <div class="vent"></div>
+      <div class="vent"></div>
+      <div class="vent"></div>
+    </div>
+    <div class="decor-label">PHONES</div>
+    <div class="dial-slot"></div>
+    <div class="serial-box">SN-20190724-LOADING</div>
+  </div>
+
+  <!-- Header Decor -->
+  <div class="gb-header-decor">
+    {% include navbar.html %}
+  </div>
+
+  <!-- Main Content Area -->
+  <main class="gb-main-content">
+
+    {{ content }}
+
+    {% include footer.html %}
+  </main>
+
+  <!-- STICKY CONTROLLER (Always follows you) -->
+  <div class="sticky-controls">
+    <div class="dpad-sticky">
+      <div class="arrows"></div>
+      <div class="center-hole"></div>
+    </div>
+
+    <div class="menu-sticky">
+      <div class="pill-btn" onclick="location.href='/contact'">CONTACT</div>
+      <div class="pill-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">TO TOP</div>
+    </div>
+
+    <div class="ab-sticky">
+      <div class="btn-round" onclick="if(window.history.length > 1) { window.history.back(); }">B</div>
+      <div class="btn-round" onclick="location.href='/'">A</div>
+    </div>
+  </div>
+
+  {% include scripts.html %}
+
+</body>
+
+</html>

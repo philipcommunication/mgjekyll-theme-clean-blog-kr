@@ -1,0 +1,141 @@
+// Styling for the masthead
+header.masthead {
+  // TIP: Background images are set within the HTML using inline CSS!
+  margin-bottom: 50px;
+  background: no-repeat center center;
+  background-color: $gray-600;
+  background-attachment: scroll;
+  position: relative;
+  @include background-cover;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .overlay {
+      /* prioritize top area so title remains visible on narrow screens */
+      background-position: center top;
+      /* keep cover but adjust so less important bottom parts are cropped */
+      background-size: cover;
+    }
+
+    .page-heading,
+    .post-heading,
+    .site-heading {
+      padding: 120px 0 80px;
+    }
+
+    .page-heading h1,
+    .site-heading h1 {
+      font-size: 28px;
+    }
+
+    .page-heading .subheading,
+    .site-heading .subheading {
+      font-size: 14px;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .overlay {
+      background-position: center top;
+      background-size: cover;
+    }
+
+    .page-heading,
+    .post-heading,
+    .site-heading {
+      padding: 90px 0 60px;
+    }
+
+    .page-heading h1,
+    .site-heading h1 {
+      font-size: 22px;
+    }
+
+    .page-heading .subheading,
+    .site-heading .subheading {
+      font-size: 12px;
+    }
+  }
+
+  .page-heading,
+  .post-heading,
+  .site-heading {
+    padding: 200px 0 150px;
+    color: white;
+
+    @media only screen and (min-width: 768px) {
+      padding: 200px 0;
+    }
+  }
+
+  .page-heading,
+  .site-heading {
+    text-align: center;
+
+    h1 {
+      font-size: 50px;
+      margin-top: 0;
+    }
+
+    .subheading {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.1;
+      display: block;
+      margin: 10px 0 0;
+    }
+
+    @media only screen and (min-width: 768px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
+  }
+
+  .post-heading {
+    h1 {
+      font-size: 35px;
+    }
+
+    .meta,
+    .subheading {
+      line-height: 1.1;
+      display: block;
+    }
+
+    .subheading {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 10px 0 30px;
+    }
+
+    .meta {
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+
+      a {
+        color: $white;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      h1 {
+        font-size: 55px;
+      }
+
+      .subheading {
+        font-size: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+<!-- Page Header -->
+{% if page.background %}
+<header class="masthead" style="background-image: url('{{ page.background | relative_url }}')">
+  {% else %}
+  <header class="masthead" style="background-image: url('{{ page.feature | relative_url }}')">
+    {% endif %}
+
+    <div class="container-fluid" style="max-width: var(--max-site-width);">
+      <div class="row">
+        <div class="col-lg-12 mx-auto">
+          <div class="post-heading">
+            <h1>{{ page.title }}</h1>
+            <span class="meta">
+              {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html
+              content=page.content %}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <article id="post-content">
+    <div class="container-fluid" style="max-width: var(--max-site-width);">
+      <div class="row">
+        <div class="col-lg-12 mx-auto">
+
+          {{ content }}
+
+
+
+        </div>
+      </div>
+    </div>
+  </article>
+  {% include related-posts.html %}
+  {% include disqus.html %}
+  <script type="text/javascript">
+    dataLayer.push({
+      'event': 'post_view',
+      'post-title': '{{ page.title }}'
+    });
+  </script>
+  <script type="text/javascript">
+    dataLayer.push({
+      'scroll-tracking': 'scroll-tracking',
+    });
+  </script>
+  <script>
+    var title = "{{ page.title }}"
+    gtag('event', title, { 'event_category': '글보기' });
+  </script>

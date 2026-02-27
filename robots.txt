@@ -1,0 +1,7 @@
+```
+User-agent: *
+Allow: /
+
+Sitemap: https://loading.kr/sitemap.xml
+```
+DaumWebMasterTool:a00f096c9578d74b6a50d3ab294eddf5d431ec0ceea067a36f215c90179cd213:8+R9pCGyucsS10vXk/Zuog==

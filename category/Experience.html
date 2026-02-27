@@ -1,0 +1,56 @@
+---
+layout: page
+title: Experience
+permalink: /category/experience/
+background: '/img/bg-experience.png'
+---
+
+<div class="post-grid-container">
+	{% for post in site.categories.experience %}
+	<article class="post-preview">
+		<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+			{% if post.feature %}
+			<div class="post-feature-wrapper">
+				{% if post.feature contains 'smain' %}
+				<div class="post-feature-template" style="background-image: url('/img/post%20main%20bg.png');">
+					<div class="template-title">{{ post.title }}</div>
+				</div>
+				{% else %}
+				<img class="post-feature" src="{{ post.feature }}" alt="">
+				{% endif %}
+			</div>
+			{% endif %}
+			<h2 class="post-title">{{ post.title }}</h2>
+			{% if post.description %}
+			<h4 class="post-subtitle">{{ post.description }}</h4>
+			{% else %}
+			<h4 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 10 }}</h4>
+			{% endif %}
+		</a>
+		<p class="post-meta">
+			{{ post.date | date: '%B %d, %Y' }}
+		</p>
+	</article>
+	{% endfor %}
+</div>
+
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+
+<div class="clearfix">
+
+	{% if paginator.previous_page %}
+	<a class="btn btn-primary float-left"
+		href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;
+		Newer<span class="d-none d-md-inline"> Posts</span></a>
+	{% endif %}
+
+	{% if paginator.next_page %}
+	<a class="btn btn-primary float-right"
+		href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older<span
+			class="d-none d-md-inline"> Posts</span> &rarr;</a>
+	{% endif %}
+
+</div>
+
+{% endif %}

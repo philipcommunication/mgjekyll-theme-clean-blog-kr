@@ -1,0 +1,30 @@
+# 의존성 및 빌드 폴더 (AI가 읽을 필요 없는 무거운 폴더)
+node_modules/
+build/
+dist/
+out/
+.next/
+
+# 환경 변수 및 보안 파일
+.env
+.env.local
+.env.*
+
+# 버전 관리 및 로그
+.git/
+*.log
+npm-debug.log*
+
+# 미디어 및 대용량 결과물 파일 (특히 리모션 작업 시 필수)
+*.mp4
+*.mov
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# 임시 파일
+temp/
+tmp/
+.DS_Store
