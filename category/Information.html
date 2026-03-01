@@ -8,7 +8,7 @@ background: '/img/bg-Information.png'
 <div class="post-grid-container">
 	{% for post in site.categories.information %}
 	<article class="post-preview">
-		<a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+		<a href="{{ post.url | relative_url }}">
 			{% if post.feature %}
 			<div class="post-feature-wrapper">
 				{% if post.feature contains 'smain' %}
@@ -40,14 +40,12 @@ background: '/img/bg-Information.png'
 <div class="clearfix">
 
 	{% if paginator.previous_page %}
-	<a class="btn btn-primary float-left"
-		href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;
+	<a class="btn btn-primary float-left" href="{{ paginator.previous_page_path | relative_url }}">&larr;
 		Newer<span class="d-none d-md-inline"> Posts</span></a>
 	{% endif %}
 
 	{% if paginator.next_page %}
-	<a class="btn btn-primary float-right"
-		href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older<span
+	<a class="btn btn-primary float-right" href="{{ paginator.next_page_path | relative_url }}">Older<span
 			class="d-none d-md-inline"> Posts</span> &rarr;</a>
 	{% endif %}
 

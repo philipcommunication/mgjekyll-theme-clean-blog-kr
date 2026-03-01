@@ -74,7 +74,7 @@ layout: default
             {% for post in site.posts limit: 8 %}
             {% unless post.categories contains "news" %}
             <article class="post-preview">
-              <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+              <a href="{{ post.url | relative_url }}">
                 {% if post.feature %}
                 <div class="post-feature-wrapper">
                   {% if post.feature contains 'smain' %}

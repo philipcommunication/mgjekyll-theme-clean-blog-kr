@@ -15,15 +15,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    {%if page.title %}
+    {% if page.title %}
     {{ page.title }} - {{ site.title }}
     {% else %}
     {{ site.title }} - {{ site.tagline }}
     {% endif %}
   </title>
 
-  <meta name="description"
-    content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  {% assign seo_description = page.description | default: page.excerpt | default: site.description | strip_html |
+  normalize_whitespace | truncate: 160 | escape %}
+  <meta name="description" content="{{ seo_description }}">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
     type='text/css'>
   <link
@@ -32,10 +33,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css">
-  <link rel="stylesheet" href="{{ "/assets/vendor/bootstrap/css/bootstrap.min.css" | relative_url }}">
-  <link rel="stylesheet" href="{{ "/assets/vendor/fontawesome-free/css/all.min.css" | relative_url }}">
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+  <link rel="stylesheet" href="{{ " /assets/vendor/bootstrap/css/bootstrap.min.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ " /assets/vendor/fontawesome-free/css/all.min.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ " /assets/main.css" | relative_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ " /feed.xml" |
+    relative_url }}">
   <!-- SEO Tag -->
   <meta name="twitter:card" content="summary_large_image" />
   {% if page.title %}
@@ -45,20 +47,10 @@
   <meta property="og:title" content="{{ site.title }} - {{ site.tagline }}" />
   <meta name="twitter:title" content="{{ site.title }} - {{ site.tagline }}" />
   {% endif %}
-  {% if page.title %}
-  <meta property="og:type" content="article" />
-  {% else %}
-  <meta property="og:type" content="website" />
-  {% endif %}
-  {% if page.description %}
-  <meta name="description" content="{{ page.description }}" />
-  <meta property="og:description" content="{{ page.description }}" />
-  <meta name="twitter:description" content="{{ page.description }}" />
-  {% else %}
-  <meta name="description" content="{{ site.description }}" />
-  <meta property="og:description" content="{{ site.description }}" />
-  <meta name="twitter:description" content="{{ site.description }}" />
-  {% endif %}
+
+  <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}" />
+  <meta property="og:description" content="{{ seo_description }}" />
+  <meta name="twitter:description" content="{{ seo_description }}" />
   {% if page.url %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
@@ -68,11 +60,11 @@
   <meta property="article:author" content="{{ page.author }}" />
   {% endif %}
   {% if page.feature %}
-  <meta property="og:image" content="{{ site.github.url }}{{ page.feature }}" />
-  <meta name="twitter:image:src" content="{{ site.github.url }}{{ page.feature }}" />
+  <meta property="og:image" content="{{ site.url }}{{ page.feature | relative_url }}" />
+  <meta name="twitter:image:src" content="{{ site.url }}{{ page.feature | relative_url }}" />
   {% else %}
-  <meta property="og:image" content="{{ site.github.url }}{{ site.thumbnail }}" />
-  <meta name="twitter:image:src" content="{{ site.github.url }}{{ site.thumbnail }}" />
+  <meta property="og:image" content="{{ site.url }}{{ site.thumbnail | relative_url }}" />
+  <meta name="twitter:image:src" content="{{ site.url }}{{ site.thumbnail | relative_url }}" />
   {% endif %}
   <meta property="og:locale" content="{{ site.locale }}" />
   <meta property="og:site_name" content="{{ site.title }}" />
@@ -88,22 +80,22 @@
   {% endif %}
   <!-- End SEO Tag -->
   <!-- Favicon Tag -->
-  <link rel="apple-touch-icon" sizes="57x57" href="{{ site.github.url }}/img/icon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="{{ site.github.url }}/img/icon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{ site.github.url }}/img/icon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ site.github.url }}/img/icon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{ site.github.url }}/img/icon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="{{ site.github.url }}/img/icon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="{{ site.github.url }}/img/icon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="{{ site.github.url }}/img/icon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.github.url }}/img/icon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="{{ site.github.url }}/img/icon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.github.url }}/img/icon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="{{ site.github.url }}/img/icon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.github.url }}/img/icon/favicon-16x16.png">
-  <link rel="manifest" href="{{ site.github.url }}/img/icon/manifest.json">
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ site.url }}/img/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ site.url }}/img/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ site.url }}/img/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ site.url }}/img/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ site.url }}/img/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ site.url }}/img/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ site.url }}/img/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ site.url }}/img/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.url }}/img/icon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ site.url }}/img/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}/img/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ site.url }}/img/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.url }}/img/icon/favicon-16x16.png">
+  <link rel="manifest" href="{{ site.url }}/img/icon/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="{{ site.github.url }}/img/icon/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="{{ site.url }}/img/icon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <!-- End Favicon Tag -->
   <!-- 네이버 연관 채널-->
