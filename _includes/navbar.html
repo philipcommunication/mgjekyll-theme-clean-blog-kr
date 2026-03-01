@@ -1,42 +1,51 @@
+{% assign url_home = "/" %}
+{% assign url_about = "/about" %}
+{% assign url_posts = "/posts" %}
+{% assign url_manual = "/category/manual" %}
+{% assign url_marketing = "/category/marketing" %}
+{% assign url_experience = "/category/experience" %}
+{% assign url_information = "/category/information" %}
+{% assign url_record = "/category/record" %}
+{% assign url_contact = "/contact" %}
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{ " /" | relative_url }}">{{ site.title | escape }}</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-      aria-label="Toggle navigation">
-      MENU <i class="fa fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /" | relative_url }}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /about" | relative_url }}">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /posts" | relative_url }}">전체 글</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /category/manual" | relative_url }}">매뉴얼</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /category/marketing" | relative_url }}">마케팅</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /category/experience" | relative_url }}">경험</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /category/information" | relative_url }}">정보</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /category/record" | relative_url }}">기록</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ " /contact" | relative_url }}">Contact</a>
-        </li>
-      </ul>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_home | relative_url }}">{{ site.title | escape }}</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+            MENU <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_home | relative_url }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_about | relative_url }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_posts | relative_url }}">전체 글</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_manual | relative_url }}">매뉴얼</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_marketing | relative_url }}">마케팅</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_experience | relative_url }}">경험</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_information | relative_url }}">정보</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_record | relative_url }}">기록</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_contact | relative_url }}">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>

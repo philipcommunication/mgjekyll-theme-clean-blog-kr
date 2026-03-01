@@ -1,12 +1,18 @@
-<script src="{{ " /assets/vendor/jquery/jquery.min.js" | relative_url }}"></script>
-<script src="{{ " /assets/vendor/bootstrap/js/bootstrap.bundle.min.js" | relative_url }}"></script>
-<script src="{{ " /assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js" | relative_url }}"></script>
+{% assign asset_jquery = "/assets/vendor/jquery/jquery.min.js" %}
+{% assign asset_bootstrap = "/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" %}
+{% assign asset_cleanbg = "/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js" %}
+{% assign asset_scripts = "/assets/scripts.js" %}
+{% assign asset_validation = "/assets/vendor/startbootstrap-clean-blog/js/jqBootstrapValidation.js" %}
 
-<script src="{{ " /assets/scripts.js" | relative_url }}"></script>
+<script src="{{ asset_jquery | relative_url }}"></script>
+<script src="{{ asset_bootstrap | relative_url }}"></script>
+<script src="{{ asset_cleanbg | relative_url }}"></script>
+
+<script src="{{ asset_scripts | relative_url }}"></script>
 
 {% if page.url contains 'contact' %}
 <!-- Form Validation -->
-<script src="{{ " /assets/vendor/startbootstrap-clean-blog/js/jqBootstrapValidation.js" | relative_url }}"></script>
+<script src="{{ asset_validation | relative_url }}"></script>
 <!-- Send Form -->
 <script>
   $(function () {
